@@ -1,0 +1,53 @@
+<table class="table table-stripped "> 
+  <tr *ngFor="let book of books  let i= index">
+    <td> {{i}}</td>
+  <td> {{book.id}}</td>
+  <td>{{book.title}}</td>
+  <td>{{book.year}}</td>
+  <td>{{book.author}}</td>
+  <td> <button class="btn btn-danger " type="submit" (click)="removeBook(i)"> DELETE</button> </td>
+  <td> <button class="btn btn-warning " type="submit" (click)="update(i , book )">UPDATE</button> </td>
+</tr>
+</table>
+<div style="text-align:center">
+    
+  <button class="btn btn-dark  " (click)="wantToAdd()"> ADD BOOK</button>  
+</div>
+
+
+<div *ngIf="append==true">
+
+    <div class="container tex-center bg-info tex-center">
+        <h3 class="display-5" style="text-align:center"> ----ADD BOOK----</h3>
+        <form #addBook="ngForm" (ngSubmit)="add(addBook.value)">
+            <input type="number" class="form-control" name="id"   placeholder="id" ngModel> <br>
+            <input type="text" class="form-control" name="title"  placeholder="title" ngModel><br>
+            <input type="number" class="form-control" name="year"  placeholder="year" ngModel><br>
+            <input type="text" class="form-control" name="author"  placeholder="author" ngModel><br>
+            <div style="text-align:center">
+    
+                <button class="btn btn-primary  " > ADD BOOK</button> 
+              </div>
+          </form>
+
+    </div>
+</div>
+
+<br>
+
+<br>
+<div *ngIf="updated==true">
+    <div class="container tex-center bg-warning tex-center">
+        <h3 class="display-5" style="text-align:center"> ----UPDATE BOOK----</h3>
+        <form #updatedata="ngForm" (ngSubmit)="updateBook(updatedata.value)">
+            <!-- <input type="number" class="form-control" name="id"   placeholder="id" ngModel="{{book.id}} "> <br> -->
+            <input type="text" class="form-control" name="title"  placeholder="title" ngModel="{{book.title}} "><br>
+            <input type="text" class="form-control" name="year"  placeholder="year" ngModel="{{book.year}} "><br>
+            <input type="text" class="form-control" name="author"  placeholder="author" ngModel="{{book.author}} "><br>
+            <div style="text-align:center">
+    
+                <button class="btn btn-primary  "> UPDATE BOOK</button> 
+              </div>
+          </form>
+    </div>
+</div>
